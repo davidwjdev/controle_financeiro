@@ -1,0 +1,430 @@
+/*--------------------------------------------------------*/
+
+
+/*Header e Body*/
+
+#content {
+    margin: 0px;
+    font-family: 'latoregular';
+    font-size: 14px;
+}
+
+#headerbg {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    background-color: #E0E0E0;
+    padding: 5px;
+}
+
+#header,
+#header-div {
+    display: flex;
+    align-items: center;
+}
+
+#header-icon-title {
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+}
+
+#header-icon-title--img {
+    height: auto;
+    width: 30px;
+}
+
+#body {
+    margin: 20px 0 0 0;
+    padding: 10px;
+}
+
+#bodybg {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+
+#header-menu-buttom--hamburguer {
+    padding: 20px;
+}
+
+/* Form */
+
+#form-title-main,
+#list-title {
+    font-weight: bold;
+    text-align: center;
+}
+
+#form-buttom--add-transacao {
+    background-color: #333333;
+    color: #FFFFFF;
+}
+
+#form-buttom--add-transacao,
+#form-input--valor,
+#form-input--nome-mercadoria,
+#form-combobox--itens {
+    height: 30px;
+    align-items: center;
+    box-sizing: border-box;
+    color: #979797;
+    border-radius: 4px;
+    padding-left: 5px;
+}
+
+
+/* List */
+
+#list {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+}
+
+#list-subtitle,
+.list-insert,
+#list-total {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#list-subtitle,
+#list-total {
+    font-weight: bold;
+}
+
+.list-insert {
+    padding: 0 20px 0 20px;
+    border-top: 1px solid;
+}
+
+#list-total {
+    margin-top: 10px;
+    border-top: double;
+    display: flex;
+    flex-direction: row;
+}
+
+.list-subtitle-div,
+.list-insert-div,
+.list-total-div {
+    margin: 10px;
+}
+
+.list-insert--simbolo {
+    padding: 10px;
+}
+
+.list-total-div,
+.list-subtitle-div {
+    padding: 0 20px 0 50px;
+}
+
+.list-insert--valor-label {
+    font-size: 12px;
+    text-align: right;
+}
+
+
+/*--------------------------------------------------------*/
+
+
+/*celulares*/
+
+@media screen and (max-width: 768px) {
+    /*Header e Body*/
+    #headerbg {
+        height: 60px;
+    }
+    #header,
+    #body {
+        width: 90%;
+    }
+    #header {
+        display: flex;
+        justify-content: space-between;
+    }
+    #header-icon-title--img {
+        width: 30px;
+    }
+        
+    .header-menu-buttom{
+        padding: 20px;
+
+    }
+    .header-menu-buttom-ul{
+        flex-direction: column;
+        background-color: #333333;
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        width: 100%;
+        max-width: 250px;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        right: 0;
+        list-style-type: none;
+        color: #E0E0E0;
+        text-align: right;
+        font-weight: bold;
+        display: none;
+
+    }
+    .header-menu-buttom-ul :hover {
+        background-color: #E0E0E0;
+        color:  #333333;
+    }
+    #header-menu-buttom--li-fechar{
+        text-align: left;
+        margin-bottom: 50px;
+        width: 10px;
+    }
+
+
+    
+
+
+
+
+
+
+
+
+    /* Form */
+    #formbg {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        border-bottom: 1px solid;
+    }
+    #form-buttom--add-transacao,
+    #form-input--valor,
+    #form-input--nome-mercadoria,
+    #form-combobox--itens {
+        width: 100%;
+    }
+    .form-title,
+    .form-title-main {
+        padding: 15px 0 5px 0;
+        display: inline-block;
+    }
+    .form-buttom {
+        padding: 15px 0 15px 0;
+    }
+    /* List */
+    #list {
+        padding: 10px 10px 0 0;
+        display: flex;
+        flex-direction: column;
+        margin: 10px 0 0 0;
+    }
+}
+
+
+/*tablet*/
+
+@media screen and (min-width: 768px) and (max-width: 1023px)and (orientation:portrait) {
+    /*Header e Body*/
+    #headerbg {
+        height: 60px;
+    }
+    #header,
+    #body {
+        width: 90%;
+    }
+    #header {
+        display: flex;
+        justify-content: space-between;
+    }
+    #header-icon-title--img {
+        width: 30px;
+    }
+    #header-menu-buttom--hamburguer {
+        width: 30px;
+    }
+
+    
+    .header-menu-buttom{
+        padding: 20px;
+
+    }
+    .header-menu-buttom-ul{
+        flex-direction: column;
+        background-color: #333333;
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        width: 100%;
+        max-width: 250px;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        right: 0;
+        list-style-type: none;
+        color: #E0E0E0;
+        text-align: right;
+        font-weight: bold;
+        display: none;
+
+    }
+    .header-menu-buttom-ul :hover {
+        background-color: #E0E0E0;
+        color:  #333333;
+    }
+    #header-menu-buttom--li-fechar{
+        text-align: left;
+        margin-bottom: 50px;
+        width: 10px;
+    }
+
+
+
+
+    /* Form */
+    #formbg {
+        width: 95%;
+        border: solid;
+        border-width: 1px;
+        border-radius: 4px;
+        padding: 15px;
+    }
+    #form {
+        display: flex;
+        flex-direction: row;
+    }
+    #form-item1,
+    #form-item2,
+    #form-item3 {
+        display: flex;
+        flex-direction: column;
+        padding: 5px;
+    }
+    .form-title,
+    .form-title-main {
+        padding: 15px 0 5px 0;
+        display: inline-block;
+    }
+    #form-item1,
+    #form-item3 {
+        width: 30%;
+    }
+    #form-item2 {
+        width: 40%;
+    }
+    #form-buttom--add-transacao {
+        width: 30%;
+    }
+    .form-buttom {
+        display: flex;
+        justify-content: flex-end;
+        padding: 5px;
+    }
+    /* List */
+    #list {
+        padding: 10px 10px 0 0;
+        display: flex;
+        flex-direction: column;
+        margin: 10px 0 0 0;
+    }
+}
+
+
+/*desktop and tablet landscape*/
+
+@media screen and (min-width: 1024px),
+screen and (min-width: 768px) and (max-width: 1023px) and (orientation:landscape) {
+    /*Header e Body*/
+    #headerbg {
+        height: 80px;
+    }
+    #header,
+    #body {
+        width: 1100px;
+    }
+    #header-menu {
+        margin-right: 20px;
+    }
+    #header-title {
+        flex: 3;
+        flex-grow: 3;
+        flex-shrink: 1;
+        flex-basis: 0%;
+    }
+    #header-icon-title--img {
+        width: 40px;
+    }
+    #header-icon-title--span {
+        margin: 10px;
+    }
+    #header-menu-buttom--hamburguer,
+    #header-menu-buttom--fechar {
+        display: none;
+    }
+
+    .header-menu-buttom-ul{
+        list-style-type: none;
+        background-color: #FFFFFF;
+        display: flex;
+        flex-direction: row;
+        padding: 0;
+    }
+    #header-menu-buttom--li-fechar{
+        display: none;
+    }
+    #header-menu-buttom--li-salvar{
+        border: none;
+    }
+
+    .header-menu-buttom {
+        border-right-style: solid;
+        border-color: #979797;
+        padding: 0px 10px 0 10px;
+        margin: 5px 0 5px 0;
+    }
+    #header-menu-buttom-div3 {
+        border: none;
+    }
+    .header-menu-buttom :hover {
+        color: #979797;
+        cursor: pointer;
+    }
+    #body {
+        display: flex;
+        justify-content: space-between;
+    }
+    /* Form */
+    #formbg {
+        display: flex;
+        flex-direction: column;
+        border: solid;
+        border-width: 1px;
+        border-radius: 4px;
+        padding: 15px;
+        width: 35%;
+    }
+    #form-buttom--add-transacao,
+    #form-input--valor,
+    #form-input--nome-mercadoria,
+    #form-combobox--itens {
+        width: 100%;
+    }
+    .form-title,
+    .form-title-main {
+        padding: 15px 0 5px 0;
+        display: inline-block;
+    }
+    .form-buttom {
+        padding: 15px 0 15px 0;
+    }
+    /*List*/
+    #list {
+        width: 65%;
+    }
+}

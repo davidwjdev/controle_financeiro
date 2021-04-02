@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="David">
+    <title>Controle Financeiro - Atividade 1 - HTML/CSS</title>
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./assets/css/style.css" type="text/css">
+    <link rel="stylesheet" href="./assets/font/stylesheet.css" type="text/css">
+
+</head>
+
+<body id="content">
+    <header id="headerbg">
+        <div id="header">
+            <div id="header-icon-title">
+                <img src="./assets/img/logo.png" alt="logo" id="header-icon-title--img">
+            </div>
+            <div id="header-title">
+                <span id="header-icon-title--span">
+                    Controle Financeiro
+                </span>
+            </div>
+            <div class="header-menu" id="header-menu">
+                <div class="header-menu-buttom" id="header-menu-buttom--hamburguer">
+                    <img src="./assets/img/hamburguer.svg" alt="menu" />
+                </div>
+                
+                    <ul class="header-menu-buttom-ul">
+                        <li class="header-menu-buttom" id="header-menu-buttom--li-fechar">
+                            <span id="header-menu-buttom--fechar">
+                                x
+                            </span>
+                        </li>
+                        <li class="header-menu-buttom">
+                            <span id="header-menu-buttom--transacoes">
+                                Cadastro de transações
+                            </span>
+                        </li>
+                        <li class="header-menu-buttom">
+                            <span id="header-menu-buttom--limpar">
+                                Limpar dados
+                            </span>
+                        </li>
+                        <li class="header-menu-buttom" id="header-menu-buttom--li-salvar">
+                            <span id="header-menu-buttom--salvar" >
+                                Salvar no servidor
+                            </span>
+                        </li>
+                    </ul>
+            </div>
+        </div>
+    </header>
+    <section id="bodybg">
+        <div id="body">
+            <div id="formbg">
+                <div id="form-title-main">
+                    <span class="form-title--tipo-transacao" id="form-title--tipo-transacao">
+                        Nova transação
+                    </span>
+                </div>
+                <div id="form">
+                    <div id="form-item1">
+                        <span class="form-title" id="form-subtitle--tipo-transacao">
+                            Tipo de Transação
+                        </span>
+                        <select name="form-combobox--itens" id="form-combobox--itens">
+                            <option value="Compra">Compra</option>
+                            <option value="Venda">Venda</option>
+                        </select>
+                    </div>
+                    <div id="form-item2">
+                        <span class="form-title" id="form-title--nome-mercadoria">
+                            Nome da Mercadoria
+                        </span>
+                        <input id="form-input--nome-mercadoria" placeholder="Input" type="text" />
+                    </div>
+                    <div id="form-item3">
+                        <span class="form-title" id="form-title--valor">
+                            Valor
+                        </span>
+                        <input id="form-input--valor" placeholder="R$ 0,00" type="text" />
+                    </div>
+                </div>
+                <div class="form-buttom">
+                    <button id="form-buttom--add-transacao">
+                        Adicionar Transação
+                    </button>
+                </div>
+            </div>
+            <div id="list">
+                <div id="list-title">
+                    <span id="list-title--extrato">
+                        Extrato de transações
+                    </span>
+                </div>
+                <div id="list-subtitle">
+                    <div class="list-subtitle-div">
+                        <span id="list-subtitle--mercadoria">
+                            Mercadoria
+                        </span>
+                    </div>
+                    <div class="list-subtitle-div">
+                        <span id="list-subtitle--valor">
+                            Valor
+                        </span>
+                    </div>
+                </div>
+                <div class="list-insert">
+                    <div class="list-insert-div">
+                        <span class="list-insert--simbolo">
+                            +
+                        </span>
+                        <span class="list-insert--mercadoria">
+                            Nenhuma transação cadastrada
+                        </span>
+                    </div>
+                    <div class="list-insert-div">
+                        <span class="list-insert--valor">
+                            R$ 0,00
+                        </span>
+                    </div>
+                </div>
+                <div class="list-insert">
+                    <div class="list-insert-div">
+                        <span class="list-insert--simbolo">
+                            +
+                        </span>
+                        <span class="list-insert--mercadoria">
+                            Nenhuma transação cadastrada
+                        </span>
+                    </div>
+                    <div class="list-insert-div">
+                        <span class="list-insert--valor">
+                            R$ 0,00
+                        </span>
+                    </div>
+                </div>
+                <div id="list-total">
+                    <div class="list-total-div">
+                        <span class="list-total--mercadoria">
+                            Total
+                        </span>
+                    </div>
+                    <div class="list-total-div">
+                        <div class="list-insert--valor">
+                            <span class="list-insert--valor">
+                                R$ 0,00
+                            </span>
+                        </div>
+                        <div class="list-insert--valor-label">
+                            <span class="list-insert--valor-label">
+                                [Lucro]
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <footer>
+        <div class="footer">
+
+        </div>
+    </footer>
+
+</body>
+
+</html>
