@@ -20,38 +20,29 @@ function validaCampos(param) {
 }
 
 
-function mascaraValor(e) {
-    e.preventDefault();
-    if (["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ",", "."].indexOf(e.key) == -1) {
-        //let value = e.target.value.replace(/\D/g, ""); 
-        console.log("letra");
-    } else {
-        let value = e.target.value.replace("0,", "").replace(",", "") + e.key;
-        console.log(value);
-        if (value.lenght <= 2) {
-            e.target.value = "0," + value;
-            console.log("e " + e.target.value + "value " + value);
-        } else {
-            e.target.value = value.slice(0, -2) + ',' + value.slice(value.lenght - 2, value.lenght);
-            console.log("e " + e.target.value);
-        }
-    }
 
 
-    //  let valor = document.getElementById('form-input--valor').addEventListener('input', (e) => {
-    //     let valor = document.getElementById('form-input--valor').value;
-    //         valor = valor.target.value.replace(/\D/g, "");//remove todos caracteres nao numeros
-    //         valor = valor.target.value.replace('0,', "").replace(',', "");
-    //      if (valor.lenght <= 2) {
-    //         valor.target.value = "0," + valor.target.value;
-    //     } else {
-    //         valor.target.value = valor.target.value.slice(0, -2) + ',' + valor.target.value.slice(-2, -1);
-    //     }
-    //      console.log(valor.target.value);
 
-    //  });
+
+//formata campo de valor
+function formataValor(param){
+    document.getElementById('form-input--valor').addEventListener('input',function(event) {
+    if (this.value.length === 1) {this.value = '0'+this.value;}
+    this.value = parseFloat(this.value.replace(/[^\d]/g,'').replace(/(\d\d?)$/,'.$1')).toFixed(2);
+});
 
 }
+
+
+
+
+
+
+
+
+//formata campo de valor
+
+
 
 function submitForm(param) {
     let selecionar = document.getElementById('form-combobox--itens').value;
@@ -113,9 +104,9 @@ window.addEventListener('load', (e) => {
             document.getElementById("list-insert--valor").innerHTML = 'R$ ' + soma;
             if (soma > 0) {
                 document.getElementById("list-insert--valor-label").innerHTML = '[Lucro]';
-            }else if (soma > 0) {
+            } else if (soma > 0) {
                 document.getElementById("list-insert--valor-label").innerHTML = '';
-            }else {
+            } else {
                 document.getElementById("list-insert--valor-label").innerHTML = '[Prejuízo]';
             }
 
