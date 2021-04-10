@@ -22,42 +22,34 @@ function validaCampos(param) {
 
 function mascaraValor(e) {
     e.preventDefault();
-     if(["0","1","2","3","4","5","6","7","8","9",",","."].indexOf(e.key) == -1){
+    if (["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ",", "."].indexOf(e.key) == -1) {
         //let value = e.target.value.replace(/\D/g, ""); 
         console.log("letra");
-     }else{
-        let value = e.target.value.replace('0,', "").replace(',', "") + e.key;
+    } else {
+        let value = e.target.value.replace("0,", "").replace(",", "") + e.key;
+        console.log(value);
         if (value.lenght <= 2) {
             e.target.value = "0," + value;
+            console.log("e " + e.target.value + "value " + value);
         } else {
-            e.target.value = value.slice(0, -2) + ',' + value.slice(value.lenght-2,value.lenght-1);
-
+            e.target.value = value.slice(0, -2) + ',' + value.slice(value.lenght - 2, value.lenght);
+            console.log("e " + e.target.value);
         }
     }
-    
-
-    // document.getElementById('form-input--valor').addEventListener('input', (e) => {
-        
-    //     e.target.value = document.getElementById('form-input--valor').value;
-    //     e.target.value = e.target.value.replace(/\D/g, ""); //remove todos caracteres nao numeros
 
 
-    //     let value = e.target.value.replace('0,', "").replace(',', "") + e.key;
-    //     console.log(value);
-
-
-    //     if (value.lenght <= 2) {
-    //         e.target.value = "0," + value;
+    //  let valor = document.getElementById('form-input--valor').addEventListener('input', (e) => {
+    //     let valor = document.getElementById('form-input--valor').value;
+    //         valor = valor.target.value.replace(/\D/g, "");//remove todos caracteres nao numeros
+    //         valor = valor.target.value.replace('0,', "").replace(',', "");
+    //      if (valor.lenght <= 2) {
+    //         valor.target.value = "0," + valor.target.value;
     //     } else {
-    //         e.target.value = value.slice(0, -2) + ',' + value.slice(-2, -1);
-
+    //         valor.target.value = valor.target.value.slice(0, -2) + ',' + valor.target.value.slice(-2, -1);
     //     }
+    //      console.log(valor.target.value);
 
-
-
-    //     e.target.value = e.target.value.replace(/\B(?=(\d{,2})+(?!\d))/, ".");//.replace(/^(\d{2})(\d)/,"$1.$2");
-    //     console.log(e.target.value);
-    // });
+    //  });
 
 }
 
@@ -68,9 +60,9 @@ function submitForm(param) {
     console.log(selecionar + mercadoria + valor);
     console.log(param);
     if (selecionar == 'Compra') {
-        selecionar = '+';
-    } else {
         selecionar = '-';
+    } else {
+        selecionar = '+';
     }
     adicionaNaLista(selecionar, mercadoria, valor);
     return false;
@@ -98,7 +90,7 @@ window.addEventListener('load', (e) => {
     let listaCompleta = JSON.parse(localStorage.getItem('itensLista'));
     console.log('listaCompleta', listaCompleta);
     let linhaHTML = '';
-
+    let soma = '0.00'
     if (typeof listaCompleta === 'undefined' || listaCompleta === null) {
         linhaHTML += '<div class="list-insert"><div class="list-insert-div"><span class="list-insert--simbolo">' +
             '</span><span class="list-insert--mercadoria">Nenhuma transação cadastrada</span></div>' +
@@ -113,6 +105,18 @@ window.addEventListener('load', (e) => {
             let linha = listaCompleta[key];
             console.log('linha ', linha);
 
+            if (linha['selecionar'] == '+') {
+                soma += parseFloat(linha['valor']);
+            } else {
+                soma -= parseFloat(linha['valor']);
+            }
+            document.getElementById("list-insert--valor").innerHTML = 'R$ ' + soma;
+            if (soma > 0) {
+                document.getElementById("list-insert--valor-label").innerHTML = '[Lucro]';
+            } else {
+                document.getElementById("list-insert--valor-label").innerHTML = '[Prejuízo]';
+            }
+
 
             linhaHTML += '<div class="list-insert" id="list-insert"><div class="list-insert-div"><span class="list-insert--simbolo">' +
                 linha['selecionar'] + '</span><span class="list-insert--mercadoria">' + linha['mercadoria'] +
@@ -121,6 +125,7 @@ window.addEventListener('load', (e) => {
 
         }
         linhaHTML += '</div>';
+        console.log('soma ' + soma);
 
         document.getElementById("list-todas-divs").innerHTML = linhaHTML;
     }

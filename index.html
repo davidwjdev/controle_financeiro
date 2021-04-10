@@ -85,7 +85,7 @@
                             <span class="form-title" id="form-title--valor">
                                 Valor
                             </span>
-                            <input id="form-input--valor" placeholder="R$ 0,00" type="text" onkeyup="mascaraValor(this)" />
+                            <input id="form-input--valor" placeholder="R$ 0,00" type="text" onkeyup="mascaraValor(event)" />
                         </div>
                         <div id="form-item4">
                             <span id="form--mensagem-erro"></span>
@@ -157,13 +157,13 @@
                     </div>
                     <div class="list-total-div">
                         <div class="list-insert--valor">
-                            <span class="list-insert--valor">
+                            <span class="list-insert--valor" id="list-insert--valor">
                                 R$ 0,00
                             </span>
                         </div>
                         <div class="list-insert--valor-label">
-                            <span class="list-insert--valor-label">
-                                [Lucro]
+                            <span class="list-insert--valor-label" id="list-insert--valor-label">
+
                             </span>
                         </div>
                     </div>
