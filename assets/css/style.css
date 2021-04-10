@@ -131,215 +131,24 @@
     text-align: right;
 }
 
+#form--mensagem-erro{
+    color: #FF0000;
+    font-weight: bold;
+}
 
 /*--------------------------------------------------------*/
 
 
-/*celulares*/
-
-@media screen and (max-width: 768px) {
-    /*Header e Body*/
-    #headerbg {
-        height: 60px;
-    }
-    #header,
-    #body {
-        width: 90%;
-    }
-    #header {
-        display: flex;
-        justify-content: space-between;
-    }
-    #header-icon-title--img {
-        width: 30px;
-    }
-        
-    .header-menu-buttom{
-        padding: 20px;
-
-    }
-    .header-menu-buttom-ul{
-        flex-direction: column;
-        background-color: #333333;
-        margin: 0;
-        padding: 0;
-        height: 100%;
-        width: 100%;
-        max-width: 250px;
-        position: fixed;
-        z-index: 1;
-        top: 0;
-        right: 0;
-        list-style-type: none;
-        color: #E0E0E0;
-        text-align: right;
-        font-weight: bold;
-        display: none;
-
-    }
-    .header-menu-buttom-ul :hover {
-        background-color: #E0E0E0;
-        color:  #333333;
-    }
-    #header-menu-buttom--li-fechar{
-        text-align: left;
-        margin-bottom: 50px;
-        width: 10px;
-    }
-
-
-    
 
 
 
 
-
-
-
-
-    /* Form */
-    #formbg {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        border-bottom: 1px solid;
-    }
-    #form-buttom--add-transacao,
-    #form-input--valor,
-    #form-input--nome-mercadoria,
-    #form-combobox--itens {
-        width: 100%;
-    }
-    .form-title,
-    .form-title-main {
-        padding: 15px 0 5px 0;
-        display: inline-block;
-    }
-    .form-buttom {
-        padding: 15px 0 15px 0;
-    }
-    /* List */
-    #list {
-        padding: 10px 10px 0 0;
-        display: flex;
-        flex-direction: column;
-        margin: 10px 0 0 0;
-    }
-}
-
-
-/*tablet*/
-
-@media screen and (min-width: 768px) and (max-width: 1023px)and (orientation:portrait) {
-    /*Header e Body*/
-    #headerbg {
-        height: 60px;
-    }
-    #header,
-    #body {
-        width: 90%;
-    }
-    #header {
-        display: flex;
-        justify-content: space-between;
-    }
-    #header-icon-title--img {
-        width: 30px;
-    }
-    #header-menu-buttom--hamburguer {
-        width: 30px;
-    }
-
-    
-    .header-menu-buttom{
-        padding: 20px;
-
-    }
-    .header-menu-buttom-ul{
-        flex-direction: column;
-        background-color: #333333;
-        margin: 0;
-        padding: 0;
-        height: 100%;
-        width: 100%;
-        max-width: 250px;
-        position: fixed;
-        z-index: 1;
-        top: 0;
-        right: 0;
-        list-style-type: none;
-        color: #E0E0E0;
-        text-align: right;
-        font-weight: bold;
-        display: none;
-
-    }
-    .header-menu-buttom-ul :hover {
-        background-color: #E0E0E0;
-        color:  #333333;
-    }
-    #header-menu-buttom--li-fechar{
-        text-align: left;
-        margin-bottom: 50px;
-        width: 10px;
-    }
-
-
-
-
-    /* Form */
-    #formbg {
-        width: 95%;
-        border: solid;
-        border-width: 1px;
-        border-radius: 4px;
-        padding: 15px;
-    }
-    #form {
-        display: flex;
-        flex-direction: row;
-    }
-    #form-item1,
-    #form-item2,
-    #form-item3 {
-        display: flex;
-        flex-direction: column;
-        padding: 5px;
-    }
-    .form-title,
-    .form-title-main {
-        padding: 15px 0 5px 0;
-        display: inline-block;
-    }
-    #form-item1,
-    #form-item3 {
-        width: 30%;
-    }
-    #form-item2 {
-        width: 40%;
-    }
-    #form-buttom--add-transacao {
-        width: 30%;
-    }
-    .form-buttom {
-        display: flex;
-        justify-content: flex-end;
-        padding: 5px;
-    }
-    /* List */
-    #list {
-        padding: 10px 10px 0 0;
-        display: flex;
-        flex-direction: column;
-        margin: 10px 0 0 0;
-    }
-}
 
 
 /*desktop and tablet landscape*/
 
-@media screen and (min-width: 1024px),
-screen and (min-width: 768px) and (max-width: 1023px) and (orientation:landscape) {
+@media screen and (min-width: 1000px),
+screen and (min-width: 1000px) and (orientation:landscape) {
     /*Header e Body*/
     #headerbg {
         height: 80px;
@@ -426,5 +235,204 @@ screen and (min-width: 768px) and (max-width: 1023px) and (orientation:landscape
     /*List*/
     #list {
         width: 65%;
+    }
+}
+
+/*tablet*/
+
+@media screen and (min-width: 645px) and (max-width: 1000px),
+screen and (min-width: 645px) and (max-width: 1000px) and (orientation:portrait) {
+    /*Header e Body*/
+    #headerbg {
+        height: 60px;
+    }
+    #header,
+    #body {
+        width: 90%;
+    }
+    #header {
+        display: flex;
+        justify-content: space-between;
+    }
+    #header-icon-title--img {
+        width: 30px;
+    }
+    #header-menu-buttom--hamburguer {
+        width: 30px;
+    }
+
+    
+    .header-menu-buttom{
+        padding: 20px;
+
+    }
+    .header-menu-buttom-ul{
+        flex-direction: column;
+        background-color: #333333;
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        width: 100%;
+        max-width: 250px;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        right: 0;
+        list-style-type: none;
+        color: #E0E0E0;
+        text-align: right;
+        font-weight: bold;
+        display: none;
+
+    }
+    .header-menu-buttom-ul :hover {
+        background-color: #E0E0E0;
+        color:  #333333;
+    }
+    #header-menu-buttom--li-fechar{
+        text-align: left;
+        margin-bottom: 50px;
+        width: 10px;
+    }
+
+
+
+
+    /* Form */
+    #formbg {
+        width: 95%;
+        border: solid;
+        border-width: 1px;
+        border-radius: 4px;
+        padding: 15px;
+    }
+    #formBody {
+        display: flex;
+        flex-direction: row;
+    }
+    #form-item1,
+    #form-item2,
+    #form-item3 {
+        display: flex;
+        flex-direction: column;
+        padding: 5px;
+    }
+    .form-title,
+    .form-title-main {
+        padding: 15px 0 5px 0;
+        display: inline-block;
+    }
+    #form-item1,
+    #form-item3 {
+        width: 30%;
+    }
+    #form-item2 {
+        width: 40%;
+    }
+    #form-buttom--add-transacao {
+        width: 30%;
+    }
+    .form-buttom {
+        display: flex;
+        justify-content: flex-end;
+        padding: 5px;
+    }
+    /* List */
+    #list {
+        padding: 10px 10px 0 0;
+        display: flex;
+        flex-direction: column;
+        margin: 10px 0 0 0;
+    }
+}
+
+/*celulares*/
+@media screen and (max-width: 645px),
+screen and (max-width: 645px) and (orientation:landscape)  {
+    /*Header e Body*/
+    #headerbg {
+        height: 60px;
+    }
+    #header,
+    #body {
+        width: 90%;
+    }
+    #header {
+        display: flex;
+        justify-content: space-between;
+    }
+    #header-icon-title--img {
+        width: 30px;
+    }
+        
+    .header-menu-buttom{
+        padding: 20px;
+
+    }
+    .header-menu-buttom-ul{
+        flex-direction: column;
+        background-color: #333333;
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        width: 100%;
+        max-width: 250px;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        right: 0;
+        list-style-type: none;
+        color: #E0E0E0;
+        text-align: right;
+        font-weight: bold;
+        display: none;
+    }
+    .header-menu-buttom-ul :hover {
+        background-color: #E0E0E0;
+        color:  #333333;
+    }
+    #header-menu-buttom--li-fechar{
+        text-align: left;
+        margin-bottom: 50px;
+        width: 10px;
+    }
+
+
+    
+
+
+
+
+
+
+
+
+    /* Form */
+    #formbg {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        border-bottom: 1px solid;
+    }
+    #form-buttom--add-transacao,
+    #form-input--valor,
+    #form-input--nome-mercadoria,
+    #form-combobox--itens {
+        width: 100%;
+    }
+    .form-title,
+    .form-title-main {
+        padding: 15px 0 5px 0;
+        display: inline-block;
+    }
+    .form-buttom {
+        padding: 15px 0 15px 0;
+    }
+    /* List */
+    #list {
+        padding: 10px 10px 0 0;
+        display: flex;
+        flex-direction: column;
+        margin: 10px 0 0 0;
     }
 }

@@ -10,6 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="./assets/css/style.css" type="text/css">
     <link rel="stylesheet" href="./assets/font/stylesheet.css" type="text/css">
+    <script src="./assets/js/script.js"></script>
 
 </head>
 
@@ -28,68 +29,74 @@
                 <div class="header-menu-buttom" id="header-menu-buttom--hamburguer">
                     <img src="./assets/img/hamburguer.svg" alt="menu" />
                 </div>
-                
-                    <ul class="header-menu-buttom-ul">
-                        <li class="header-menu-buttom" id="header-menu-buttom--li-fechar">
-                            <span id="header-menu-buttom--fechar">
-                                x
-                            </span>
-                        </li>
-                        <li class="header-menu-buttom">
-                            <span id="header-menu-buttom--transacoes">
-                                Cadastro de transações
-                            </span>
-                        </li>
-                        <li class="header-menu-buttom">
-                            <span id="header-menu-buttom--limpar">
-                                Limpar dados
-                            </span>
-                        </li>
-                        <li class="header-menu-buttom" id="header-menu-buttom--li-salvar">
-                            <span id="header-menu-buttom--salvar" >
-                                Salvar no servidor
-                            </span>
-                        </li>
-                    </ul>
+
+                <ul class="header-menu-buttom-ul">
+                    <li class="header-menu-buttom" id="header-menu-buttom--li-fechar">
+                        <span id="header-menu-buttom--fechar">
+                            x
+                        </span>
+                    </li>
+                    <li class="header-menu-buttom">
+                        <span id="header-menu-buttom--transacoes">
+                            Cadastro de transações
+                        </span>
+                    </li>
+                    <li class="header-menu-buttom">
+                        <span id="header-menu-buttom--limpar" onclick="limpaLocalStorage()" >
+                            Limpar dados
+                        </span>
+                    </li>
+                    <li class="header-menu-buttom" id="header-menu-buttom--li-salvar">
+                        <span id="header-menu-buttom--salvar">
+                            Salvar no servidor
+                        </span>
+                    </li>
+                </ul>
             </div>
         </div>
     </header>
     <section id="bodybg">
         <div id="body">
             <div id="formbg">
-                <div id="form-title-main">
-                    <span class="form-title--tipo-transacao" id="form-title--tipo-transacao">
-                        Nova transação
-                    </span>
-                </div>
-                <div id="form">
-                    <div id="form-item1">
-                        <span class="form-title" id="form-subtitle--tipo-transacao">
-                            Tipo de Transação
+                <form id="form">
+                    <div id="form-title-main">
+                        <span class="form-title--tipo-transacao" id="form-title--tipo-transacao">
+                            Nova transação
                         </span>
-                        <select name="form-combobox--itens" id="form-combobox--itens">
-                            <option value="Compra">Compra</option>
-                            <option value="Venda">Venda</option>
-                        </select>
                     </div>
-                    <div id="form-item2">
-                        <span class="form-title" id="form-title--nome-mercadoria">
-                            Nome da Mercadoria
-                        </span>
-                        <input id="form-input--nome-mercadoria" placeholder="Input" type="text" />
+                    <div id="formBody">
+                        <div id="form-item1">
+                            <span class="form-title" id="form-subtitle--tipo-transacao">
+                                Tipo de Transação
+                            </span>
+                            <select name="form-combobox--itens" id="form-combobox--itens">
+                                <option value="">Selecione</option>
+                                <option value="Compra">Compra</option>
+                                <option value="Venda">Venda</option>
+                            </select>
+                        </div>
+                        <div id="form-item2">
+                            <span class="form-title" id="form-title--nome-mercadoria">
+                                Nome da Mercadoria
+                            </span>
+                            <input id="form-input--nome-mercadoria" placeholder="Input" type="text" />
+                        </div>
+                        <div id="form-item3">
+                            <span class="form-title" id="form-title--valor">
+                                Valor
+                            </span>
+                            <input id="form-input--valor" placeholder="R$ 0,00" type="text" onkeyup="mascaraValor()" />
+                        </div>
+                        <div id="form-item4">
+                            <span id="form--mensagem-erro"></span>
+                        </div>
                     </div>
-                    <div id="form-item3">
-                        <span class="form-title" id="form-title--valor">
-                            Valor
-                        </span>
-                        <input id="form-input--valor" placeholder="R$ 0,00" type="text" />
+                    <div class="form-buttom">
+                        <button type="submit" id="form-buttom--add-transacao" onclick="validaCampos()">
+                            Adicionar Transação
+                        </button>
                     </div>
-                </div>
-                <div class="form-buttom">
-                    <button id="form-buttom--add-transacao">
-                        Adicionar Transação
-                    </button>
-                </div>
+                </form>
             </div>
             <div id="list">
                 <div id="list-title">
@@ -109,7 +116,7 @@
                         </span>
                     </div>
                 </div>
-                <div class="list-insert">
+                <!-- <div class="list-insert">
                     <div class="list-insert-div">
                         <span class="list-insert--simbolo">
                             +
@@ -138,6 +145,9 @@
                             R$ 0,00
                         </span>
                     </div>
+                </div> -->
+                <div id="list-todas-divs">
+
                 </div>
                 <div id="list-total">
                     <div class="list-total-div">
