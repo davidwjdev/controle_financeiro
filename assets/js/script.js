@@ -113,7 +113,9 @@ window.addEventListener('load', (e) => {
             document.getElementById("list-insert--valor").innerHTML = 'R$ ' + soma;
             if (soma > 0) {
                 document.getElementById("list-insert--valor-label").innerHTML = '[Lucro]';
-            } else {
+            }else if (soma > 0) {
+                document.getElementById("list-insert--valor-label").innerHTML = '';
+            }else {
                 document.getElementById("list-insert--valor-label").innerHTML = '[Prejuízo]';
             }
 
