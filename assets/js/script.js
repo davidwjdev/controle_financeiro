@@ -16,17 +16,48 @@ function validaCampos(param) {
         return false;
     } else
         submitForm(param);
-        return false;
+    return false;
 }
 
 
-function mascaraValor(param) {
-    let valor = document.getElementById('form-input--valor').addEventListener('input', (e) => {
-        e.target.value = document.getElementById('form-input--valor').value;
-        e.target.value = e.target.value.replace(/\D/g, ""); //remove todos caracteres nao numeros
-        e.target.value = e.target.value.replace(/\B(?=(\d{,2})+(?!\d))/, ".");//.replace(/^(\d{2})(\d)/,"$1.$2");
-        console.log(e.target.value);
-    });
+function mascaraValor(e) {
+    e.preventDefault();
+     if(["0","1","2","3","4","5","6","7","8","9",",","."].indexOf(e.key) == -1){
+        //let value = e.target.value.replace(/\D/g, ""); 
+        console.log("letra");
+     }else{
+        let value = e.target.value.replace('0,', "").replace(',', "") + e.key;
+        if (value.lenght <= 2) {
+            e.target.value = "0," + value;
+        } else {
+            e.target.value = value.slice(0, -2) + ',' + value.slice(value.lenght-2,value.lenght-1);
+
+        }
+    }
+    
+
+    // document.getElementById('form-input--valor').addEventListener('input', (e) => {
+        
+    //     e.target.value = document.getElementById('form-input--valor').value;
+    //     e.target.value = e.target.value.replace(/\D/g, ""); //remove todos caracteres nao numeros
+
+
+    //     let value = e.target.value.replace('0,', "").replace(',', "") + e.key;
+    //     console.log(value);
+
+
+    //     if (value.lenght <= 2) {
+    //         e.target.value = "0," + value;
+    //     } else {
+    //         e.target.value = value.slice(0, -2) + ',' + value.slice(-2, -1);
+
+    //     }
+
+
+
+    //     e.target.value = e.target.value.replace(/\B(?=(\d{,2})+(?!\d))/, ".");//.replace(/^(\d{2})(\d)/,"$1.$2");
+    //     console.log(e.target.value);
+    // });
 
 }
 
@@ -41,58 +72,57 @@ function submitForm(param) {
     } else {
         selecionar = '-';
     }
-
-        adicionaNaLista(selecionar, mercadoria, valor);
-        return false;
+    adicionaNaLista(selecionar, mercadoria, valor);
+    return false;
 
 }
 
 function adicionaNaLista(selecionar, mercadoria, valor) {
-        let oldItens = JSON.parse(localStorage.getItem('itensLista')) || [];
-        let newItem = {
-            'selecionar': selecionar,
-            'mercadoria': mercadoria,
-            'valor': valor
-        };
-        oldItens.push(newItem);
-        localStorage.setItem('itensLista', JSON.stringify(oldItens));
-        console.log(JSON.parse(localStorage.getItem('itensLista')));   
+    let oldItens = JSON.parse(localStorage.getItem('itensLista')) || [];
+    let newItem = {
+        'selecionar': selecionar,
+        'mercadoria': mercadoria,
+        'valor': valor
+    };
+    oldItens.push(newItem);
+    localStorage.setItem('itensLista', JSON.stringify(oldItens));
+    console.log(JSON.parse(localStorage.getItem('itensLista')));
 }
 
- function limpaLocalStorage(){
-     window.localStorage.clear();
-     return true;
- }
+function limpaLocalStorage() {
+    window.localStorage.clear();
+    return true;
+}
 
 window.addEventListener('load', (e) => {
     let listaCompleta = JSON.parse(localStorage.getItem('itensLista'));
     console.log('listaCompleta', listaCompleta);
     let linhaHTML = '';
 
-    if ( typeof listaCompleta === 'undefined' ||   listaCompleta === null) {
+    if (typeof listaCompleta === 'undefined' || listaCompleta === null) {
         linhaHTML += '<div class="list-insert"><div class="list-insert-div"><span class="list-insert--simbolo">' +
-        '</span><span class="list-insert--mercadoria">Nenhuma transação cadastrada</span></div>' +
-        '<div class="list-insert-div"><span class="list-insert--valor"></span></div></div>';
-    document.getElementById("list-todas-divs").innerHTML = linhaHTML;
+            '</span><span class="list-insert--mercadoria">Nenhuma transação cadastrada</span></div>' +
+            '<div class="list-insert-div"><span class="list-insert--valor"></span></div></div>';
+        document.getElementById("list-todas-divs").innerHTML = linhaHTML;
     } else {
-      
-    for (let key in listaCompleta) {
-        console.log('key ', key);
-        console.log('listaCompleta ', listaCompleta);
-        console.log(typeof(selecionar));
-        let linha = listaCompleta[key];
-        console.log('linha ', linha);
+
+        for (let key in listaCompleta) {
+            console.log('key ', key);
+            console.log('listaCompleta ', listaCompleta);
+            console.log(typeof (selecionar));
+            let linha = listaCompleta[key];
+            console.log('linha ', linha);
 
 
-        linhaHTML += '<div class="list-insert" id="list-insert"><div class="list-insert-div"><span class="list-insert--simbolo">' +
-             linha['selecionar'] + '</span><span class="list-insert--mercadoria">' + linha['mercadoria'] +
-            '</span></div><div class="list-insert-div"><span class="list-insert--valor"> R$ ' +
-            linha['valor'] + '</span></div></div>';
+            linhaHTML += '<div class="list-insert" id="list-insert"><div class="list-insert-div"><span class="list-insert--simbolo">' +
+                linha['selecionar'] + '</span><span class="list-insert--mercadoria">' + linha['mercadoria'] +
+                '</span></div><div class="list-insert-div"><span class="list-insert--valor"> R$ ' +
+                linha['valor'] + '</span></div></div>';
 
+        }
+        linhaHTML += '</div>';
+
+        document.getElementById("list-todas-divs").innerHTML = linhaHTML;
     }
-    linhaHTML += '</div>';
-
-    document.getElementById("list-todas-divs").innerHTML = linhaHTML;
-}
 })
     ;
