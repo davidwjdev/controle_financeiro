@@ -1,5 +1,6 @@
 
 function validaCampos(param) {
+    document.getElementById('form--mensagem-erro').innerHTML = '';
     if (
         document.getElementById('form-combobox--itens').value == '' ||
         document.getElementById('form-input--nome-mercadoria').value == '' ||
@@ -7,69 +8,73 @@ function validaCampos(param) {
     ) {
         document.getElementById('form--mensagem-erro').innerHTML = 'Todos os campos devem ser preenchidos!';
         return false;
-    } else if (
-        document.getElementById('form-input--valor').value == '0.00' ||
-        document.getElementById('form-input--valor').value == '0,00' ||
-        document.getElementById('form-input--valor').value <= '0'
+    }
+    if (
+        document.getElementById('form-input--valor').value == "00" ||
+        document.getElementById('form-input--valor').value == "0" ||
+        document.getElementById('form-input--valor').value == "0,0" ||
+        document.getElementById('form-input--valor').value == "0,00" 
     ) {
-        document.getElementById('form--mensagem-erro').innerHTML = 'Preencha um valor valido!';
+        document.getElementById('form--mensagem-erro').innerHTML = 'Valor deve ser maior que zero!';
         return false;
-    } else
-        submitForm(param);
-    return true;
+    }
+    submitForm(param);
+    return (true);
+
+
+
+
 }
 
 
 
 //formata campo de valor
-function formataValor(param){
-    document.getElementById('form-input--valor').addEventListener('input',function(event) {
-    if (this.value.length === 1) {this.value = '0'+this.value;}
-    this.value = parseFloat(this.value.replace(/[^\d]/g,'').replace(/(\d\d?)$/,'.$1')).toFixed(2);
-});
+function mascaraValor(param) {
+    //     document.getElementById('form-input--valor').addEventListener('input',function(event) {
+    //     if (this.value.length === 1) {
+    //         this.value = '0'+this.value;
+    //     }
+    //     this.value = parseFloat(this.value.replace(/[^\d]/g,'').replace(/(\d\d?)$/,'.$1')).toFixed(2);
+
+    // });
 
 
- // param.preventDefault();
-    // if (["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"].indexOf(param.key) == -1) {
-    //     //console.log("letra");
-    // } else {
-    //     let valor = param.target.value.replace(/^0,/, "").replace(",", "").replace(/\./g, "") + param.key;
-    //     //replace("0,", "").replace(",", "") 
-    //     //console.log(valor);
-    //     if (valor.length <= 2) {
-    //         param.target.value = "0," + valor;
-    //         //console.log("e " + param.target.value + "value " + valor);
-    //     } else {
-    //         param.target.value = valor.slice(0, -2) + ',' + valor.slice(valor.length - 2, valor.length);
-    //         //console.log("e " + param.target.value);
-    //     }
-    //     lastIndex = -1;
-    //     valor = param.target.value.replace(/^0,[0-9]+/, "").replace(/,[0-9]+$/, "").replace(/\./g, "");
-    //     if (valor.length >= 4) {
-    //         valorFinal = [];
-    //         for (let i = valor.length; i >= 0; i--) {
-    //             if ((valor.length - i) % 3 == 0 && valor.slice(i - 3, i)) {
-    //                 valorFinal.push(valor.slice(i - 3, i));
-    //                 lastIndex = i;
-    //             }
-    //         }
-    //         valorString = valorFinal.reverse().join(".");
-    //         param.target.value = valorString + "," + param.target.value.replace(/^[0-9.]+,/, "");
-    //         if (valor.slice(0, lastIndex - 3)) {
-    //             param.target.value = valor.slice(0, lastIndex - 3) + "." + param.target.value;
-    //         }
-    //     }
-    // }
+    param.preventDefault();
+    if (["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"].indexOf(param.key) == -1) {
+        //console.log("letra");
+    } else {
+        let valor = param.target.value.replace(/^0,/, "").replace(",", "").replace(/\./g, "") + param.key;
+        //replace("0,", "").replace(",", "") 
+        //console.log(valor);
+        if (valor.length <= 2) {
+            param.target.value = "0," + valor;
+            console.log("param " + param.target.value + "value " + valor);
+            console.log(typeof valor);
+        } else {
+            param.target.value = valor.slice(0, -2) + ',' + valor.slice(valor.length - 2, valor.length);
+            console.log("param " + param.target.value);
+            console.log(typeof valor);
+
+        }
+        lastIndex = -1;
+        valor = param.target.value.replace(/^0,[0-9]+/, "").replace(/,[0-9]+$/, "").replace(/\./g, "");
+        if (valor.length >= 4) {
+            valorFinal = [];
+            for (let i = valor.length; i >= 0; i--) {
+                if ((valor.length - i) % 3 == 0 && valor.slice(i - 3, i)) {
+                    valorFinal.push(valor.slice(i - 3, i));
+                    lastIndex = i;
+                }
+            }
+            valorString = valorFinal.reverse().join(".");
+            param.target.value = valorString + "," + param.target.value.replace(/^[0-9.]+,/, "");
+            if (valor.slice(0, lastIndex - 3)) {
+                param.target.value = valor.slice(0, lastIndex - 3) + "." + param.target.value;
+            }
+        }
+    }
 
 }
-
-
-
-
-
-
-
-
 //formata campo de valor
 
 
@@ -86,8 +91,6 @@ function submitForm(param) {
         selecionar = '+';
     }
     adicionaNaLista(selecionar, mercadoria, valor);
-    return false;
-
 }
 
 function adicionaNaLista(selecionar, mercadoria, valor) {
@@ -103,15 +106,24 @@ function adicionaNaLista(selecionar, mercadoria, valor) {
 }
 
 function limpaLocalStorage() {
-    window.localStorage.clear();
-    return true;
+    let limpar = confirm('Deseja limpar todos registros?');
+    console.log(limpar.valueOf);
+    window.addEventListener('message', (limpar) => {
+        if (limpar = TRUE) {
+            window.localStorage.clear();
+            return true;
+        } else {
+            return false;
+        }
+    })
+
 }
 
 window.addEventListener('load', (e) => {
     let listaCompleta = JSON.parse(localStorage.getItem('itensLista'));
-    console.log('listaCompleta', listaCompleta);
+    //console.log('listaCompleta', listaCompleta);
     let linhaHTML = '';
-    let soma = '0.00'
+    let soma = 0.0;
     if (typeof listaCompleta === 'undefined' || listaCompleta === null) {
         linhaHTML += '<div class="list-insert"><div class="list-insert-div"><span class="list-insert--simbolo">' +
             '</span><span class="list-insert--mercadoria">Nenhuma transação cadastrada</span></div>' +
@@ -120,21 +132,24 @@ window.addEventListener('load', (e) => {
     } else {
 
         for (let key in listaCompleta) {
-            console.log('key ', key);
-            console.log('listaCompleta ', listaCompleta);
-            console.log(typeof (selecionar));
+            //console.log('key ', key);
+            //console.log('listaCompleta ', listaCompleta);
+            //console.log(typeof (selecionar));
             let linha = listaCompleta[key];
-            console.log('linha ', linha);
+            //console.log('linha ', linha);
 
             if (linha['selecionar'] == '+') {
                 soma += parseFloat(linha['valor']);
+                console.log(typeof (soma));
             } else {
                 soma -= parseFloat(linha['valor']);
+                console.log(typeof (soma));
             }
-            document.getElementById("list-insert--valor").innerHTML = 'R$ ' + soma;
+            document.getElementById("list-insert--valor").innerHTML = 'R$ ' + parseFloat(soma);
+            console.log(typeof (soma));
             if (soma > 0) {
                 document.getElementById("list-insert--valor-label").innerHTML = '[Lucro]';
-            } else if (soma > 0) {
+            } else if (soma = 0) {
                 document.getElementById("list-insert--valor-label").innerHTML = '';
             } else {
                 document.getElementById("list-insert--valor-label").innerHTML = '[Prejuízo]';
@@ -148,7 +163,7 @@ window.addEventListener('load', (e) => {
 
         }
         linhaHTML += '</div>';
-        console.log('soma ' + soma);
+        //console.log('soma ' + soma);
 
         document.getElementById("list-todas-divs").innerHTML = linhaHTML;
     }

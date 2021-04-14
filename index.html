@@ -87,14 +87,16 @@
                             </span>                            
                             <input id="form-input--valor" placeholder="R$ 0,00" type="text" onkeypress="mascaraValor(event)" />
                         </div>
-                        <div id="form-item4">
-                            <span id="form--mensagem-erro"></span>
-                        </div>
+
+                    </div>
+                    <div id="form-item4">
+                        <span id="form--mensagem-erro"></span>
                     </div>
                     <div class="form-buttom">
-                        <button type="submit" id="form-buttom--add-transacao" onclick="validaCampos()">
+                        <button type="submit" id="form-buttom--add-transacao" onclick=" return validaCampos()">
                             Adicionar Transação
                         </button>
+
                     </div>
                 </form>
             </div>
