@@ -20,44 +20,6 @@ function validaCampos(param) {
 }
 
 
-<<<<<<< HEAD
-function mascaraValor(param) {
-    param.preventDefault();
-    if (["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"].indexOf(param.key) == -1) {
-        //console.log("letra");
-    } else {
-        let valor = param.target.value.replace(/^0,/, "").replace(",", "").replace(/\./g, "") + param.key;
-        //replace("0,", "").replace(",", "") 
-        //console.log(valor);
-        if (valor.length <= 2) {
-            param.target.value = "0," + valor;
-            //console.log("e " + param.target.value + "value " + valor);
-        } else {
-            param.target.value = valor.slice(0, -2) + ',' + valor.slice(valor.length - 2, valor.length);
-            //console.log("e " + param.target.value);
-        }
-        lastIndex = -1;
-        valor = param.target.value.replace(/^0,[0-9]+/, "").replace(/,[0-9]+$/, "").replace(/\./g, "");
-        if (valor.length >= 4) {
-            valorFinal = [];
-            for (let i = valor.length; i >= 0; i--) {
-                if ((valor.length - i) % 3 == 0 && valor.slice(i - 3, i)) {
-                    valorFinal.push(valor.slice(i - 3, i));
-                    lastIndex = i;
-                }
-            }
-            valorString = valorFinal.reverse().join(".");
-            param.target.value = valorString + "," + param.target.value.replace(/^[0-9.]+,/, "");
-            if (valor.slice(0, lastIndex - 3)) {
-                param.target.value = valor.slice(0, lastIndex - 3) + "." + param.target.value;
-            }
-        }
-    }
-=======
->>>>>>> ccf09b35e735ae10161f1948cc59f3ab6f3f3096
-
-
-
 
 //formata campo de valor
 function formataValor(param){
