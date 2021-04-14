@@ -16,24 +16,40 @@ function validaCampos(param) {
         return false;
     } else
         submitForm(param);
-    return false;
+    return true;
 }
 
 
-function mascaraValor(e) {
-    e.preventDefault();
-    if (["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ",", "."].indexOf(e.key) == -1) {
-        //let value = e.target.value.replace(/\D/g, ""); 
-        console.log("letra");
+function mascaraValor(param) {
+    param.preventDefault();
+    if (["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"].indexOf(param.key) == -1) {
+        //console.log("letra");
     } else {
-        let value = e.target.value.replace("0,", "").replace(",", "") + e.key;
-        console.log(value);
-        if (value.lenght <= 2) {
-            e.target.value = "0," + value;
-            console.log("e " + e.target.value + "value " + value);
+        let valor = param.target.value.replace(/^0,/, "").replace(",", "").replace(/\./g, "") + param.key;
+        //replace("0,", "").replace(",", "") 
+        //console.log(valor);
+        if (valor.length <= 2) {
+            param.target.value = "0," + valor;
+            //console.log("e " + param.target.value + "value " + valor);
         } else {
-            e.target.value = value.slice(0, -2) + ',' + value.slice(value.lenght - 2, value.lenght);
-            console.log("e " + e.target.value);
+            param.target.value = valor.slice(0, -2) + ',' + valor.slice(valor.length - 2, valor.length);
+            //console.log("e " + param.target.value);
+        }
+        lastIndex = -1;
+        valor = param.target.value.replace(/^0,[0-9]+/, "").replace(/,[0-9]+$/, "").replace(/\./g, "");
+        if (valor.length >= 4) {
+            valorFinal = [];
+            for (let i = valor.length; i >= 0; i--) {
+                if ((valor.length - i) % 3 == 0 && valor.slice(i - 3, i)) {
+                    valorFinal.push(valor.slice(i - 3, i));
+                    lastIndex = i;
+                }
+            }
+            valorString = valorFinal.reverse().join(".");
+            param.target.value = valorString + "," + param.target.value.replace(/^[0-9.]+,/, "");
+            if (valor.slice(0, lastIndex - 3)) {
+                param.target.value = valor.slice(0, lastIndex - 3) + "." + param.target.value;
+            }
         }
     }
 
@@ -113,9 +129,9 @@ window.addEventListener('load', (e) => {
             document.getElementById("list-insert--valor").innerHTML = 'R$ ' + soma;
             if (soma > 0) {
                 document.getElementById("list-insert--valor-label").innerHTML = '[Lucro]';
-            }else if (soma > 0) {
+            } else if (soma > 0) {
                 document.getElementById("list-insert--valor-label").innerHTML = '';
-            }else {
+            } else {
                 document.getElementById("list-insert--valor-label").innerHTML = '[Prejuízo]';
             }
 
