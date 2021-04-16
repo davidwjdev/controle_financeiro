@@ -27,12 +27,12 @@
             </div>
             <div class="header-menu" id="header-menu">
                 <div class="header-menu-buttom" id="header-menu-buttom--hamburguer">
-                    <img src="./assets/img/hamburguer.svg" alt="menu" />
+                    <img src="./assets/img/hamburguer.svg" alt="menu" onclick="abrirMenu()" />
                 </div>
 
-                <ul class="header-menu-buttom-ul">
+                <ul id="header-menu-buttom-ul">
                     <li class="header-menu-buttom" id="header-menu-buttom--li-fechar">
-                        <span id="header-menu-buttom--fechar">
+                        <span id="header-menu-buttom--fechar"  onclick="fecharMenu()">
                             x
                         </span>
                     </li>
@@ -42,12 +42,12 @@
                         </span>
                     </li>
                     <li class="header-menu-buttom">
-                        <span id="header-menu-buttom--limpar" onclick="limpaLocalStorage()" >
+                        <span id="header-menu-buttom--limpar" onclick="return limpaLocalStorage()" >
                             Limpar dados
                         </span>
                     </li>
                     <li class="header-menu-buttom" id="header-menu-buttom--li-salvar">
-                        <span id="header-menu-buttom--salvar">
+                        <span id="header-menu-buttom--salvar" href="javascript:void(0);"  onclick="salvarServidor()"> 
                             Salvar no servidor
                         </span>
                     </li>

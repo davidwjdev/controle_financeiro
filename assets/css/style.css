@@ -182,7 +182,7 @@ screen and (min-width: 1000px) and (orientation:landscape) {
         display: none;
     }
 
-    .header-menu-buttom-ul{
+    #header-menu-buttom-ul{
         list-style-type: none;
         background-color: #FFFFFF;
         display: flex;
@@ -271,7 +271,7 @@ screen and (min-width: 645px) and (max-width: 1000px) and (orientation:portrait)
         padding: 20px;
 
     }
-    .header-menu-buttom-ul{
+    #header-menu-buttom-ul{
         flex-direction: column;
         background-color: #333333;
         margin: 0;
@@ -290,7 +290,7 @@ screen and (min-width: 645px) and (max-width: 1000px) and (orientation:portrait)
         display: none;
 
     }
-    .header-menu-buttom-ul :hover {
+    #header-menu-buttom-ul :hover {
         background-color: #E0E0E0;
         color:  #333333;
     }
@@ -374,14 +374,14 @@ screen and (max-width: 645px) and (orientation:landscape)  {
         padding: 20px;
 
     }
-    .header-menu-buttom-ul{
+    #header-menu-buttom-ul{
         flex-direction: column;
         background-color: #333333;
         margin: 0;
         padding: 0;
         height: 100%;
-        width: 100%;
-        max-width: 250px;
+        width: 0;
+        /* max-width: 0px; */
         position: fixed;
         z-index: 1;
         top: 0;
@@ -390,9 +390,11 @@ screen and (max-width: 645px) and (orientation:landscape)  {
         color: #E0E0E0;
         text-align: right;
         font-weight: bold;
-        display: none;
+        overflow-x: hidden;
+        transition: 0.5s;
+        /* display: none; */
     }
-    .header-menu-buttom-ul :hover {
+    #header-menu-buttom-ul :hover {
         background-color: #E0E0E0;
         color:  #333333;
     }
@@ -403,7 +405,7 @@ screen and (max-width: 645px) and (orientation:landscape)  {
     }
 
 
-    
+
 
 
 
