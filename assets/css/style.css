@@ -277,8 +277,7 @@ screen and (min-width: 645px) and (max-width: 1000px) and (orientation:portrait)
         margin: 0;
         padding: 0;
         height: 100%;
-        width: 100%;
-        max-width: 250px;
+        width: 0;
         position: fixed;
         z-index: 1;
         top: 0;
@@ -287,7 +286,8 @@ screen and (min-width: 645px) and (max-width: 1000px) and (orientation:portrait)
         color: #E0E0E0;
         text-align: right;
         font-weight: bold;
-        display: none;
+        transition: 0.5s;
+        /* display: none; */
 
     }
     #header-menu-buttom-ul :hover {

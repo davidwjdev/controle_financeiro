@@ -1,5 +1,5 @@
 function abrirMenu() {
-  document.getElementById("header-menu-buttom-ul").style.width = "250px";
+    document.getElementById("header-menu-buttom-ul").style.width = "250px";
 }
 
 function fecharMenu() {
@@ -36,6 +36,7 @@ function mascaraValor(param) {
         }
         lastIndex = -1;
         valor = param.target.value.replace(/^0,[0-9]+/, "").replace(/,[0-9]+$/, "").replace(/\./g, "");
+        //console.log("valor " + valor);
         if (valor.length >= 4) {
             valorFinal = [];
             for (let i = valor.length; i >= 0; i--) {
@@ -133,20 +134,20 @@ function salvarServidor() {
             Authorization: "Bearer key2CwkHb0CKumjuM"
         }
     }).then(response => response.json())
-    .then(responseJson => {
-        const existe = responseJson.records.filter((record) => {
-            if (aluno == record.fields.Aluno) {
-                return true;
+        .then(responseJson => {
+            const existe = responseJson.records.filter((record) => {
+                if (aluno == record.fields.Aluno) {
+                    return true;
+                }
+                return false;
+            });
+            if (existe.length == 0) {
+                insereDados();
+            } else {
+                alteraDados(existe[0].id);
             }
-            return false;
-        });
-        if (existe.length == 0) {
-            insereDados();
-        } else {
-            alteraDados(existe[0].id);
-        }
 
-    });
+        });
 }
 
 function insereDados() {
@@ -173,11 +174,11 @@ function insereDados() {
     });
 }
 
-function alteraDados(id){
+function alteraDados(id) {
     let json = JSON.stringify(listaCompleta);
     let body = JSON.stringify({
         "records": [
-            {   
+            {
                 "id": id,
                 "fields": {
                     "Aluno": aluno,
@@ -201,57 +202,13 @@ function alteraDados(id){
 //Fim itens de salvar no servidor
 
 
-function totalComPonto(param){
-    let lastIndex = -1;
-    let valor = param;
-    let valorAntesV = valor.slice(valor.length - 2, valor.length);
-    console.log("valorAntesV"+ valorAntesV);
-    let valorDepoisV = valor.slice(0, -2);
-    console.log("valorDepoisV"+valorDepoisV);
-    if(valor.length >=4){
-        console.log("passou aqui");
-    }
-    console.log("não passou");
-
-    //console.log("param"+param+" tyoeOf "+typeof param);
-    
-    //console.log("valor"+valor);
-    //console.log("param"+param.length);
-
-
-
-
-    // if (valor.length >= 4) {
-        
-    //     valorFinal = [];
-    //     for (let i = valor.length; i >= 0; i--) {
-    //         if ((valor.length - i) % 3 == 0 && valor.slice(i - 3, i)) {
-    //             valorFinal.push(valor.slice(i - 3, i));
-    //             lastIndex = i;
-    //             //console.log("valorFinal"+valorFinal);
-    //         }
-    //     }
-    //     valorString = valorFinal.reverse().join(".");
-    //     ///console.log("valorString "+valorString);
-    //     param.target.value = valorString + "," + param.target.value.replace(/^[0-9.]+,/, "");
-    //     if (valor.slice(0, lastIndex - 3)) {
-    //         param.target.value = valor.slice(0, lastIndex - 3) + "." + param.target.value;
-    //         //console.log("param.target.value "+param.target.value);
-    //     }
-    // }
-    
-    // //console.log("param "+param);
-    // soma = param;
-    // //console.log("soma "+soma);
-    // return soma;
-}
 
 
 window.addEventListener('load', (e) => {
     let listaCompleta = JSON.parse(localStorage.getItem('itensLista'));
     //console.log('listaCompleta', listaCompleta);
     let linhaHTML = '';
-    let soma = 0;
+    let soma = 0.00;
     if (typeof listaCompleta === 'undefined' || listaCompleta === null) {
         linhaHTML += '<div class="list-insert"><div class="list-insert-div"><span class="list-insert--simbolo">' +
             '</span><span class="list-insert--mercadoria">Nenhuma transação cadastrada</span></div>' +
@@ -264,28 +221,23 @@ window.addEventListener('load', (e) => {
             //console.log('listaCompleta ', listaCompleta);
             //console.log(typeof (selecionar));
             let linha = listaCompleta[key];
-            //console.log('linha ', linha);
+            // console.log('linha ', linha);
 
-            let valorSemPonto = parseFloat(linha['valor'].replace(".", "").replace(",", "."));
 
+            let valorString = linha['valor'].toString();
+            //console.log('valorString ', valorString + typeof valorString);
+            valorString = valorString.replace(/\./g, "");
+            valorString = valorString.replace(/\,/g, ".");
+            //console.log('valorString normalizacao', valorString + typeof valorString);
+            let valorSemPonto = parseFloat(valorString).toFixed(2);
             if (linha['selecionar'] == '-') {
                 valorSemPonto = valorSemPonto * -1;
-                //console.log(valorSemPonto);
+            }else{
+                valorSemPonto = valorSemPonto * 1;
             }
-            soma = valorSemPonto + soma;
-            //console.log(soma);
-            //totalComPonto(soma);
-            
-            document.getElementById("list-insert--valor").innerHTML = 'R$ ' + soma;
-            // console.log(typeof (soma));
-            if (soma > 0) {
-                document.getElementById("list-insert--valor-label").innerHTML = '[Lucro]';
-            } else if (soma = 0) {
-                document.getElementById("list-insert--valor-label").innerHTML = '';
-            } else {
-                document.getElementById("list-insert--valor-label").innerHTML = '[Prejuízo]';
-            }
-
+            console.log('valorSemPonto ', valorSemPonto + typeof valorSemPonto);
+            soma += valorSemPonto;
+            //console.log("soma:  " + soma);
 
             linhaHTML += '<div class="list-insert" id="list-insert"><div class="list-insert-div"><span class="list-insert--simbolo">' +
                 linha['selecionar'] + '</span><span class="list-insert--mercadoria">' + linha['mercadoria'] +
@@ -294,9 +246,26 @@ window.addEventListener('load', (e) => {
 
         }
         linhaHTML += '</div>';
-        //console.log('soma ' + soma);
-
         document.getElementById("list-todas-divs").innerHTML = linhaHTML;
+
+        console.log(soma);
+        const formatarValor = new Intl.NumberFormat({
+            style: 'currency',
+            currency: 'BRL',
+            minimumFractionDigits: 2
+          });
+
+
+    document.getElementById("list-insert--valor").innerHTML = 'R$ ' + formatarValor.format(soma);
+    if (soma > 0) {
+        document.getElementById("list-insert--valor-label").innerHTML = '[Lucro]';
+    } else if (soma == 0) {
+        document.getElementById("list-insert--valor-label").innerHTML = '';
+    } else {
+        document.getElementById("list-insert--valor-label").innerHTML = '[Prejuízo]';
     }
+
+
+}
 })
     ;
