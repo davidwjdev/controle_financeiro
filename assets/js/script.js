@@ -90,11 +90,6 @@ function submitForm(param) {
     let valor = document.getElementById('form-input--valor').value;
     //console.log(selecionar + mercadoria + valor);
     //console.log(param);
-    if (selecionar == 'Compra') {
-        selecionar = '-';
-    } else {
-        selecionar = '+';
-    }
     adicionaNaLista(selecionar, mercadoria, valor);
 }
 
@@ -230,7 +225,7 @@ window.addEventListener('load', (e) => {
             valorString = valorString.replace(/\,/g, ".");
             //console.log('valorString normalizacao', valorString + typeof valorString);
             let valorSemPonto = parseFloat(valorString).toFixed(2);
-            if (linha['selecionar'] == '-') {
+            if (linha['selecionar'] == 'Compra') {
                 valorSemPonto = valorSemPonto * -1;
             }else{
                 valorSemPonto = valorSemPonto * 1;
@@ -238,9 +233,15 @@ window.addEventListener('load', (e) => {
             console.log('valorSemPonto ', valorSemPonto + typeof valorSemPonto);
             soma += valorSemPonto;
             //console.log("soma:  " + soma);
+            let selecionar;
+            if (linha['selecionar']  == 'Compra') {
+                selecionar = '-';
+            } else {
+                selecionar = '+';
+            }
 
             linhaHTML += '<div class="list-insert" id="list-insert"><div class="list-insert-div"><span class="list-insert--simbolo">' +
-                linha['selecionar'] + '</span><span class="list-insert--mercadoria">' + linha['mercadoria'] +
+                selecionar+ '</span><span class="list-insert--mercadoria">' + linha['mercadoria'] +
                 '</span></div><div class="list-insert-div"><span class="list-insert--valor"> R$ ' +
                 (linha['valor']) + '</span></div></div>';
 
