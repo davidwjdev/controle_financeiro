@@ -1,9 +1,9 @@
 function abrirMenu() {
-    document.getElementById("header-menu-buttom-ul").style.width = "250px";
+    document.getElementById("header-menu-button-ul").style.width = "250px";
 }
 
 function fecharMenu() {
-    document.getElementById("header-menu-buttom-ul").style.width = "0";
+    document.getElementById("header-menu-button-ul").style.width = "0";
 }
 
 //formata campo de valor
@@ -218,7 +218,7 @@ window.addEventListener('load', (e) => {
             let linha = listaCompleta[key];
             // console.log('linha ', linha);
 
-
+            
             let valorString = linha['valor'].toString();
             //console.log('valorString ', valorString + typeof valorString);
             valorString = valorString.replace(/\./g, "");
